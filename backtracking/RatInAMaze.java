@@ -15,9 +15,14 @@ public class RatInAMaze {
 		}
 		path[i][j] = 1;
 		if(i == n - 1 && j == n - 1) {
+			for(int r = 0 ; r < n ; r++) {
+				for(int c = 0 ; c < n ; c++) {
+					System.out.print(path[r][c] + " ");
+				}
+				System.out.println();
+			}
 			return true;
 		}
-		
 		if(solveMaze(maze , i - 1 , j , path)) {
 			return true;
 		}
@@ -30,13 +35,12 @@ public class RatInAMaze {
 		if(solveMaze(maze , i , j - 1 , path)) {
 			return true;
 		}
-		
 		return false;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int maze[][] = {{1,1,0},{1,1,0},{1,0,1}};
+		int maze[][] = {{1,1,0},{1,1,0},{1,1,1}};
 		boolean pathPossible = ratInAMaze(maze);
 		System.out.println(pathPossible);
 
