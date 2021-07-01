@@ -4,7 +4,7 @@ public class HasPath {
 	
 	public static boolean hasPathDFS(int[][] grid , int s , int d) {
 		
-		 boolean visited[] = new boolean[grid.length];
+		boolean visited[] = new boolean[grid.length];
 		return hasPathDFSHelper(grid , s , d  , visited );
 	}
 
