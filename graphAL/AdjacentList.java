@@ -7,6 +7,28 @@ import java.util.Scanner;
 
 public class AdjacentList {
 	
+	public static void printDFSHelper(ArrayList<ArrayList<Integer>> adj , int sv , boolean visited[]) {
+		System.out.print(sv + " ");
+		visited[sv] = true;
+		int n = adj.size();
+		ArrayList<Integer> list = adj.get(sv);
+		for(int i = 0; i < list.size() ; i++) {
+			if(!visited[list.get(i)]) {
+				printDFSHelper(adj , list.get(i) , visited);
+			}
+		}
+	}
+ 	
+	public static void printDFS(ArrayList<ArrayList<Integer>> adj) {
+		boolean visited[] = new boolean[adj.size()];
+		for(int i = 0 ; i < adj.size() ; i++) {
+			if(!visited[i]) {
+				printDFSHelper(adj , i , visited);
+			}
+		}
+		
+	}
+	
 	public static void printBFSHelper(ArrayList<ArrayList<Integer>> adj , int sv , boolean visited[]) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(sv);
@@ -15,7 +37,7 @@ public class AdjacentList {
 		while(!q.isEmpty()) {
 			int front;
 			front = q.remove();
-			System.out.println(front);
+			System.out.print(front + " ");
 			ArrayList<Integer> list = adj.get(front);
 			for(int i = 0 ; i < list.size(); i++) {
 				if(!visited[list.get(i)]) {
@@ -60,6 +82,9 @@ public class AdjacentList {
 			}
 		}
 		printBFS(adj);
+		System.out.println();
+		System.out.println("******************");
+		printDFS(adj);
 	}
 
 }
